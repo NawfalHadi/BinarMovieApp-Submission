@@ -15,6 +15,17 @@
             android:layout_height="match_parent"
             android:padding="32dp">
 
+            <ImageButton
+                android:id="@+id/btn_image"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="#FFFFFF00"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
@@ -27,7 +38,15 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/btn_image" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/how_to_change_image"
+                app:layout_constraintStart_toStartOf="@id/btn_image"
+                app:layout_constraintEnd_toEndOf="@id/btn_image"
+                app:layout_constraintTop_toBottomOf="@id/textView"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_etReg_username"

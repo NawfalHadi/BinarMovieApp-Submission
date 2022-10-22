@@ -42,22 +42,25 @@ class AccountViewModel @Inject constructor(
 
     fun setUsername(username: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            delay(100)
             repository.setUsername(username)
         }
     }
 
     fun setEmail(email: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            delay(200)
             repository.setEmail(email)
         }
     }
 
     fun setPassword(password: String){
         viewModelScope.launch(Dispatchers.IO) {
-            delay(300)
             repository.setPassword(password)
+        }
+    }
+
+    fun setImage(image: String){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.setImage(image)
         }
     }
 

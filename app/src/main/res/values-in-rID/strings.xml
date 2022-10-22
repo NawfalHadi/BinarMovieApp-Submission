@@ -22,4 +22,5 @@
     <string name="confirm">Konfirmasi</string>
     <string name="logout">Keluar</string>
     <string name="input_curPass">Masukkan Password Saat Ini</string>
+    <string name="how_to_change_image">click image to change profile</string>
 </resources>
