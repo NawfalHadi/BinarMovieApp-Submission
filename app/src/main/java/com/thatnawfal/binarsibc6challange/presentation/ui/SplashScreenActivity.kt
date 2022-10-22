@@ -13,6 +13,7 @@ import com.thatnawfal.binarsibc6challange.presentation.ui.auth.LoginBottomSheet
 import com.thatnawfal.binarsibc6challange.presentation.ui.auth.OnLoginListener
 import com.thatnawfal.binarsibc6challange.presentation.ui.auth.OnRegisterListener
 import com.thatnawfal.binarsibc6challange.presentation.ui.auth.RegisterBottomSheet
+import com.thatnawfal.binarsibc6challange.presentation.ui.home.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @SuppressLint("CustomSplashScreen")
@@ -28,7 +29,8 @@ class SplashScreenActivity : AppCompatActivity() {
         Handler().postDelayed({
             viewModel.getLoginStatus().observe(this){
                 if (it) {
-                    Toast.makeText(this@SplashScreenActivity, "Already Login", Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this@SplashScreenActivity, HomeActivity::class.java))
+                    finish()
                 } else {
                     showLoginBottomSheet()
                 }
@@ -47,7 +49,8 @@ class SplashScreenActivity : AppCompatActivity() {
 
                 override fun loginSuccess() {
                     viewModel.setLoginStatus(true)
-                    Toast.makeText(this@SplashScreenActivity, "Login Succes", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this@SplashScreenActivity, HomeActivity::class.java))
+                    finish()
                 }
             }).show(supportFragmentManager, LoginBottomSheet::class.java.simpleName)
         }

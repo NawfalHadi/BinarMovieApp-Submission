@@ -42,7 +42,6 @@ class LoginBottomSheet(
         }
 
         binding.btnLoginLogin.setOnClickListener {
-
             if (formValidation()){
                 listener.loginSuccess()
                 dismiss()

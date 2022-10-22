@@ -15,6 +15,9 @@
         android:theme="@style/Theme.BinarSIBC6Challange"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.ui.home.HomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.ui.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
