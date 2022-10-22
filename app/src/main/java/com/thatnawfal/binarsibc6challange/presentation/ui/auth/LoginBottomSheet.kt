@@ -1,6 +1,5 @@
 package com.thatnawfal.binarsibc6challange.presentation.ui.auth
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.thatnawfal.binarsibc6challange.databinding.FragmentLoginBottomSheetBinding
-import com.thatnawfal.binarsibc6challange.presentation.logic.auth.AuthViewModel
+import com.thatnawfal.binarsibc6challange.presentation.logic.account.AccountViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,7 +19,7 @@ class LoginBottomSheet(
     private var _binding : FragmentLoginBottomSheetBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel : AuthViewModel by viewModels()
+    private val viewModel : AccountViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

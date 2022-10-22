@@ -4,11 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.thatnawfal.binarsibc6challange.databinding.FragmentRegisterBottomSheetBinding
-import com.thatnawfal.binarsibc6challange.presentation.logic.auth.AuthViewModel
+import com.thatnawfal.binarsibc6challange.presentation.logic.account.AccountViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,7 +18,7 @@ class RegisterBottomSheet(
     private var _binding : FragmentRegisterBottomSheetBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel : AuthViewModel by viewModels()
+    private val viewModel : AccountViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

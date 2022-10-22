@@ -5,10 +5,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.widget.Toast
 import androidx.activity.viewModels
 import com.thatnawfal.binarsibc6challange.R
-import com.thatnawfal.binarsibc6challange.presentation.logic.auth.AuthViewModel
+import com.thatnawfal.binarsibc6challange.presentation.logic.account.AccountViewModel
 import com.thatnawfal.binarsibc6challange.presentation.ui.auth.LoginBottomSheet
 import com.thatnawfal.binarsibc6challange.presentation.ui.auth.OnLoginListener
 import com.thatnawfal.binarsibc6challange.presentation.ui.auth.OnRegisterListener
@@ -20,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SplashScreenActivity : AppCompatActivity() {
 
-    private val viewModel : AuthViewModel by viewModels()
+    private val viewModel : AccountViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

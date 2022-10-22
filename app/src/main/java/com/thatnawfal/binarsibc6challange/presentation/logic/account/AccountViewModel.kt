@@ -1,17 +1,16 @@
-package com.thatnawfal.binarsibc6challange.presentation.logic.auth
+package com.thatnawfal.binarsibc6challange.presentation.logic.account
 
 import androidx.lifecycle.*
-import com.thatnawfal.binarsibc5challange.wrapper.Resource
 import com.thatnawfal.binarsibc6challange.data.local.model.AccountModel
 import com.thatnawfal.binarsibc6challange.data.repository.LocalRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AuthViewModel @Inject constructor(
+class AccountViewModel @Inject constructor(
     private val repository: LocalRepository
 )  : ViewModel()  {
 
@@ -38,6 +37,27 @@ class AuthViewModel @Inject constructor(
     fun setLoginStatus(status: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.setLoginStatus(status)
+        }
+    }
+
+    fun setUsername(username: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            delay(100)
+            repository.setUsername(username)
+        }
+    }
+
+    fun setEmail(email: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            delay(200)
+            repository.setEmail(email)
+        }
+    }
+
+    fun setPassword(password: String){
+        viewModelScope.launch(Dispatchers.IO) {
+            delay(300)
+            repository.setPassword(password)
         }
     }
 
