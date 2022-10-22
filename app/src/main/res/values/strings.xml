@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">BinarSIBC6Challange</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="title" translatable="false">Title : The Legend Of Lorem Ipsum</string>
+    <string name="countryCode">en-US</string>
+
+    <!--Home Activity-->
+    <string name="Film" translatable="false">Film</string>
+    <string name="Profile">Profile</string>
+
+    <!--List Movie Fragment-->
+    <string name="now_playing">Now Playing</string>
+    <string name="latest_movies">Latest Movies</string>
+    <string name="toprated_movies">Top Rated Movies</string>
+    <string name="popular_movies">Popular Movies</string>
+    <string name="lorem_ipsum" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam lobortis purus at sapien maximus bibendum. Fusce augue nisl, interdum sed consequat consectetur, placerat eget risus. Curabitur accumsan blandit urna, ut laoreet diam laoreet ac. Morbi nec lacus sem. In id consectetur metus. Cras hendrerit lectus ut justo cursus consequat. Curabitur dapibus odio dictum lacus viverra, non vestibulum augue egestas. Duis ac elementum neque. Morbi vel nunc felis. Pellentesque iaculis nisl est, eget fermentum erat bibendum nec. Mauris tincidunt dolor eu tortor consectetur rutrum.</string>
+    <string name="recomended">Recommendation</string>
+    <string name="minute">Minute</string>
+    <string name="input_username">Input Username</string>
+    <string name="input_email">Input Email</string>
+    <string name="input_password">Input Password</string>
+    <string name="input_password_confirmation">Input Password Confirmation</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="input_new_password">Input New Password</string>
+    <string name="confirm">Confirm</string>
+    <string name="logout">Logout</string>
+    <string name="input_curPass">Input Current Password</string>
 </resources>

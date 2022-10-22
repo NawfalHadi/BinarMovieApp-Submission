@@ -7,4 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- TMDB COLOR ICON PALLETE -->
+    <color name="colorIconStart">#FF90CEA1</color>
+    <color name="colorIconMid">#FF3CBEC9</color>
+    <color name="colorIconEnd">#FF00B3E5</color>
+
+    <!-- TMDB PALLETE -->
+    <color name="tmdb_100">#011F34</color>
+    <color name="tmdb_75">#032444</color>
+    <color name="tmdb_50">#45A8B8</color>
+    <color name="tmdb_25">#1BA6DB</color>
 </resources>

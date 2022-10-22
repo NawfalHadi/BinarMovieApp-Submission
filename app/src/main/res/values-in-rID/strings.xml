@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="countryCode">id</string>
+
+    <!--Home Activity-->
+    <string name="Profile">Profil</string>
+
+    <!--List Movie Fragment-->
+    <string name="now_playing">Sedang Tayang</string>
+    <string name="latest_movies">Rilis Terbaru</string>
+    <string name="toprated_movies">Peringkat Teratas</string>
+    <string name="popular_movies">Populer</string>
+    <string name="recomended">Rekomendasi</string>
+    <string name="minute">Menit</string>
+    <string name="input_username">Masukkan Username</string>
+    <string name="input_password">Masukkan Password</string>
+    <string name="input_email">Masukkan Email</string>
+    <string name="input_password_confirmation">Masukkan Confirmasi Password</string>
+    <string name="login">Masuk</string>
+    <string name="register">Daftar</string>
+    <string name="input_new_password">Masukkan Password Baru</string>
+    <string name="confirm">Konfirmasi</string>
+    <string name="logout">Keluar</string>
+    <string name="input_curPass">Masukkan Password Saat Ini</string>
+</resources>
