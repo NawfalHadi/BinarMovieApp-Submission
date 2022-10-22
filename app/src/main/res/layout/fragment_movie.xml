@@ -43,12 +43,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-<!--            <androidx.recyclerview.widget.RecyclerView-->
-<!--                android:id="@+id/rv_movie_listRecycler"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                tools:listitem="@layout/item_list_recycler"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/rv_movie_nowPlaying" />-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_movie_listRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_list_recycler"
+                app:layout_constraintTop_toBottomOf="@+id/rv_movie_nowPlaying" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.thatnawfal.binarsibc6challange">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".MyApp"
         android:allowBackup="true"
