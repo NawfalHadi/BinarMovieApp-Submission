@@ -8,10 +8,19 @@
         android:id="@+id/movieFragment"
         android:name="com.thatnawfal.binarsibc6challange.presentation.ui.home.movie.MovieFragment"
         android:label="fragment_movie"
-        tools:layout="@layout/fragment_movie" />
+        tools:layout="@layout/fragment_movie" >
+        <action
+            android:id="@+id/action_movieFragment_to_detailMovieFragment"
+            app:destination="@id/detailMovieFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.thatnawfal.binarsibc6challange.presentation.ui.home.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/detailMovieFragment"
+        android:name="com.thatnawfal.binarsibc6challange.presentation.ui.home.movie.DetailMovieFragment"
+        android:label="fragment_detail_movie"
+        tools:layout="@layout/fragment_detail_movie" />
 </navigation>

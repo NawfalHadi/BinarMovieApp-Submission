@@ -35,7 +35,7 @@ class MovieFragment : Fragment() {
                 movieId?.let {
                     val mBundle = Bundle()
                     mBundle.putInt("movie_id", it)
-//                    findNavController().navigate(R.id.action_movieListFragment_to_detailMovieFragment, mBundle)
+                    findNavController().navigate(R.id.action_movieFragment_to_detailMovieFragment, mBundle)
                 }
             }
 
@@ -48,7 +48,7 @@ class MovieFragment : Fragment() {
                 movieId?.let {
                     val mBundle = Bundle()
                     mBundle.putInt("movie_id", it)
-//                    findNavController().navigate(R.id.action_movieListFragment_to_detailMovieFragment, mBundle)
+                    findNavController().navigate(R.id.action_movieFragment_to_detailMovieFragment, mBundle)
                 }
             }
         })

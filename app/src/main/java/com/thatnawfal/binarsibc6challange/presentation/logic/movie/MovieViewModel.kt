@@ -25,6 +25,9 @@ class MovieViewModel @Inject constructor(
     val topRatedListMovies = MutableLiveData<Resource<ListResponse<MoviesListItemResponse>>>()
     val popularListMovies = MutableLiveData<Resource<ListResponse<MoviesListItemResponse>>>()
 
+    val resultListRecommended = MutableLiveData<Resource<ListResponse<MoviesListItemResponse>>>()
+    val resultDetailMovie = MutableLiveData<Resource<MovieDetailResponse>>()
+
     fun loadNowPlayingMovies(){
         nowPlayingMovies.postValue(Resource.Loading())
         viewModelScope.launch(Dispatchers.IO) {
@@ -57,9 +60,6 @@ class MovieViewModel @Inject constructor(
     }
 
     // DetailMovies
-
-    val resultListRecommended = MutableLiveData<Resource<ListResponse<MoviesListItemResponse>>>()
-    val resultDetailMovie = MutableLiveData<Resource<MovieDetailResponse>>()
 
     fun loadDetailMovie(movieId: Int, language:String){
         resultDetailMovie.postValue(Resource.Loading())
