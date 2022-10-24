@@ -26,6 +26,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fb_blur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_blur_on"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_image"
+                app:layout_constraintEnd_toEndOf="@+id/btn_image"
+                app:layout_constraintStart_toEndOf="@+id/btn_image"
+                app:layout_constraintTop_toBottomOf="@+id/btn_image" />
+
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
@@ -38,7 +49,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btn_image" />
+                app:layout_constraintTop_toBottomOf="@id/fb_blur" />
 
             <TextView
                 android:layout_width="wrap_content"
