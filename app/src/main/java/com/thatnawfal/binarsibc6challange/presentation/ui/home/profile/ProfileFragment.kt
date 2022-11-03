@@ -1,7 +1,6 @@
 package com.thatnawfal.binarsibc6challange.presentation.ui.home.profile
 
 import android.Manifest
-import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -11,7 +10,6 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
 import android.util.Base64
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +17,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.thatnawfal.binarsibc6challange.data.local.model.AccountModel
@@ -41,6 +40,7 @@ class ProfileFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel : AccountViewModel by viewModels()
+
     private lateinit var account: AccountModel
 
     private lateinit var uri: Uri
@@ -73,6 +73,7 @@ class ProfileFragment : Fragment() {
             bindingView(it)
             account = it
         }
+        binding.fbBlur.setOnClickListener {  }
 
         binding.btnImage.setOnClickListener {
             checkingPermission()
