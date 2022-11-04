@@ -23,4 +23,13 @@
         android:name="com.thatnawfal.binarsibc6challange.presentation.ui.home.movie.DetailMovieFragment"
         android:label="fragment_detail_movie"
         tools:layout="@layout/fragment_detail_movie" />
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.thatnawfal.binarsibc6challange.presentation.ui.home.movie.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_detailMovieFragment"
+            app:destination="@id/detailMovieFragment" />
+    </fragment>
 </navigation>

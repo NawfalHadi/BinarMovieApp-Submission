@@ -29,4 +29,5 @@
     <string name="logout">Logout</string>
     <string name="input_curPass">Input Current Password</string>
     <string name="how_to_change_image">click image to change profile</string>
+    <string name="favorite">Favorite</string>
 </resources>

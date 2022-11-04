@@ -1,6 +1,8 @@
 package com.thatnawfal.binarsibc6challange.data.repository
 
 import com.thatnawfal.binarsibc5challange.wrapper.Resource
+import com.thatnawfal.binarsibc6challange.data.local.database.FavoriteEntity
+import com.thatnawfal.binarsibc6challange.data.local.datasource.FavoriteDataSource
 import com.thatnawfal.binarsibc6challange.data.local.datasource.LocalDataSource
 import com.thatnawfal.binarsibc6challange.data.local.datastore.AccountDataStoreManager
 import com.thatnawfal.binarsibc6challange.data.local.model.AccountModel
@@ -21,10 +23,21 @@ interface LocalRepository {
 
     //Get Account Data
     fun getAccountData() : Flow<AccountModel>
+
+    // Add Favorite
+    suspend fun addFavorite(favorite : FavoriteEntity) : Resource<Long>
+
+    // Remove Favorite
+    suspend fun removeFavorite(favorite: FavoriteEntity) : Resource<Int>
+
+    // Get List Favorite
+    suspend fun getFavorite(uid: String) : Resource<List<FavoriteEntity>>
+
 }
 
 class LocalRepositroyImpl(
-    private val localDataSource: LocalDataSource
+    private val localDataSource: LocalDataSource,
+    private val favoriteDataSource: FavoriteDataSource
 ) : LocalRepository{
     override suspend fun registerAccount(username: String, password: String, email: String) {
         localDataSource.registerAccount(username, password, email)
@@ -56,6 +69,34 @@ class LocalRepositroyImpl(
 
     override fun getAccountData(): Flow<AccountModel> {
         return localDataSource.getAccountData()
+    }
+
+    // Using Favorite Repository
+
+    override suspend fun addFavorite(favorite: FavoriteEntity): Resource<Long> {
+        return proceed {
+            favoriteDataSource.addFavorite(favorite)
+        }
+    }
+
+    override suspend fun removeFavorite(favorite: FavoriteEntity): Resource<Int> {
+        return proceed {
+            favoriteDataSource.removeFavorite(favorite)
+        }
+    }
+
+    override suspend fun getFavorite(uid: String): Resource<List<FavoriteEntity>> {
+        return proceed {
+            favoriteDataSource.getFavorite(uid)
+        }
+    }
+
+    private suspend fun <T> proceed(coroutine: suspend () -> T): Resource<T> {
+        return try {
+            Resource.Success(coroutine.invoke())
+        } catch (exception: Exception) {
+            Resource.Error(exception)
+        }
     }
 
 }
