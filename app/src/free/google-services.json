@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "769858060691",
+    "project_id": "binartmdb",
+    "storage_bucket": "binartmdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:769858060691:android:a87aa841027075efe1a866",
+        "android_client_info": {
+          "package_name": "com.thatnawfal.binarsibc6challange.free"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "769858060691-rimk0nlpu37o3au5h9hjt97osgcen4u2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALio-siua1TOnYLtVnl5Dhazs_2PxON70"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "769858060691-rimk0nlpu37o3au5h9hjt97osgcen4u2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

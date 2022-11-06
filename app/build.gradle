@@ -51,10 +51,18 @@ android {
     flavorDimensions 'default'
     productFlavors {
         free {
+            dimension "default"
+            applicationIdSuffix ".free"
+            versionNameSuffix "-free"
+
             buildConfigField("String", "TMDB_BASE_URL", "\"${keyProperties.getProperty("BASE_URL")}\"")
             buildConfigField("String", "TMDB_API_KEY", "\"${keyProperties.getProperty("API_KEY")}\"")
         }
         paid {
+            dimension "default"
+            applicationIdSuffix ".paid"
+            versionNameSuffix "-paid"
+
             buildConfigField("String", "TMDB_BASE_URL", "\"${keyProperties.getProperty("BASE_URL")}\"")
             buildConfigField("String", "TMDB_API_KEY", "\"${keyProperties.getProperty("API_KEY")}\"")
         }

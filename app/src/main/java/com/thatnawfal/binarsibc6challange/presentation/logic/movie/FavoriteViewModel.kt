@@ -1,8 +1,12 @@
 package com.thatnawfal.binarsibc6challange.presentation.logic.movie
 
+import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.thatnawfal.binarsibc5challange.wrapper.Resource
 import com.thatnawfal.binarsibc6challange.data.local.database.FavoriteEntity
 import com.thatnawfal.binarsibc6challange.data.repository.LocalRepository
@@ -20,35 +24,51 @@ class FavoriteViewModel @Inject constructor(
     private val localRepository: LocalRepository
 ) : ViewModel() {
 
-    val listFavoriteResult = MutableLiveData<Resource<List<FavoriteEntity>>>()
+    private val _listFavoriteResult = MutableLiveData<List<FavoriteEntity>>()
+    val listFavoriteResult : LiveData<List<FavoriteEntity>> = _listFavoriteResult
+
     val newFavorite = MutableLiveData<Resource<String>>()
     val isFavorited = MutableLiveData<Boolean>()
 
     val msgSnackBar = MutableLiveData<Event<String>>()
+    val db = Firebase.firestore
 
     // Local
 
-    fun getFavoriteLocal(uid : String) {
-        viewModelScope.launch(Dispatchers.IO){
-            listFavoriteResult.postValue(Resource.Loading())
-            val data = localRepository.getFavorite(uid)
-            delay(1000)
-            viewModelScope.launch(Dispatchers.Main){
-                listFavoriteResult.postValue(data)
-            }
-        }
-    }
+//    fun getFavoriteLocal(uid : String) {
+//        viewModelScope.launch(Dispatchers.IO){
+//            listFavoriteResult.postValue(Resource.Loading())
+//            val data = localRepository.getFavorite(uid)
+//            delay(1000)
+//            viewModelScope.launch(Dispatchers.Main){
+//                listFavoriteResult.postValue(data)
+//            }
+//        }
+//    }
 
     // Firebase
 
-    fun getFavoriteNetwork(uid: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            listFavoriteResult.postValue(Resource.Loading())
-            val data = networkRepository.loadListFavorite(uid)
-            delay(1000)
-            viewModelScope.launch(Dispatchers.Main){
-                listFavoriteResult.postValue(data)
-            }
+    fun getFavoriteNetwork() {
+        viewModelScope.launch {
+            val listFavoriteEntity = mutableListOf<FavoriteEntity>()
+            db.collection("favorite")
+                .get()
+                .addOnSuccessListener {
+                    for (document in it) {
+                        val favorite = FavoriteEntity(
+                            document.id.toInt(),
+                            document.data["uid"] as String?,
+                            document.data["poster"] as String?
+                        )
+                        listFavoriteEntity.add(favorite)
+                        Log.d("Firebase", "${document.id} => ${document.data["poster"].toString()}")
+                    }
+                    _listFavoriteResult.postValue(listFavoriteEntity)
+                }
+                .addOnFailureListener {
+                    Log.w("Firebase", "Error getting documents.", it)
+                }
+
         }
     }
 

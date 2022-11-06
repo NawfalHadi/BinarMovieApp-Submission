@@ -16,7 +16,7 @@ interface NetworkRepository {
     suspend fun loadPopularMovies(): Resource<ListResponse<MoviesListItemResponse>>
     suspend fun loadRecommendedMovies(movieId: Int): Resource<ListResponse<MoviesListItemResponse>>
 
-    suspend fun loadListFavorite(uid: String): Resource<List<FavoriteEntity>>
+    suspend fun loadListFavorite(uid: String): List<FavoriteEntity>
     suspend fun addFavorite(filmId : Int, uid: String, poster: String) : Resource<String>
     suspend fun deleteFavorite(filmId: Int) : Boolean
     suspend fun checkFavorite(filmId: Int): Boolean
@@ -55,17 +55,8 @@ class NetworkRepositoryImpl(
         return loadListData(dataSource.loadRecommendedMovies(movieId))
     }
 
-    override suspend fun loadListFavorite(uid: String): Resource<List<FavoriteEntity>> {
-        return try {
-            val list = firebaseDataSource.getFavorite(uid)
-            if (list.get(0).uid.isNullOrEmpty()){
-                Resource.Empty()
-            } else {
-                Resource.Success(list)
-            }
-        } catch (e : Exception) {
-            Resource.Error(e)
-        }
+    override suspend fun loadListFavorite(uid: String): List<FavoriteEntity> {
+        return firebaseDataSource.getFavorite(uid)
     }
 
     override suspend fun addFavorite(filmId: Int, uid: String, poster: String): Resource<String> {

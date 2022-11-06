@@ -122,9 +122,4 @@ class MovieFragment : Fragment() {
         binding.rvMovieListRecycler.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         binding.rvMovieListRecycler.adapter = adapterListRecycler
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }
