@@ -30,16 +30,6 @@ android {
         }
     }
 
-    flavorDimensions "default"
-    productFlavors {
-        free {
-            applicationId "com.thatnawfal.binarsibc6challange.free"
-        }
-        paid {
-            applicationId "com.thatnawfal.binarsibc6challange.paid"
-        }
-    }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -60,8 +50,11 @@ android {
 
     flavorDimensions 'default'
     productFlavors {
-        production {
-            dimension = 'default'
+        free {
+            buildConfigField("String", "TMDB_BASE_URL", "\"${keyProperties.getProperty("BASE_URL")}\"")
+            buildConfigField("String", "TMDB_API_KEY", "\"${keyProperties.getProperty("API_KEY")}\"")
+        }
+        paid {
             buildConfigField("String", "TMDB_BASE_URL", "\"${keyProperties.getProperty("BASE_URL")}\"")
             buildConfigField("String", "TMDB_API_KEY", "\"${keyProperties.getProperty("API_KEY")}\"")
         }

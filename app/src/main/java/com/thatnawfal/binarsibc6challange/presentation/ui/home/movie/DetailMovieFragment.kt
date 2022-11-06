@@ -14,11 +14,14 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
+import com.google.android.material.snackbar.Snackbar
 import com.thatnawfal.binarsibc5challange.wrapper.Resource
 import com.thatnawfal.binarsibc6challange.R
+import com.thatnawfal.binarsibc6challange.data.network.firebase.StorageFirebase
 import com.thatnawfal.binarsibc6challange.data.network.response.detailresponse.MovieDetailResponse
 import com.thatnawfal.binarsibc6challange.databinding.FragmentDetailMovieBinding
 import com.thatnawfal.binarsibc6challange.databinding.FragmentMovieBinding
+import com.thatnawfal.binarsibc6challange.presentation.logic.movie.FavoriteViewModel
 import com.thatnawfal.binarsibc6challange.presentation.logic.movie.MovieViewModel
 import com.thatnawfal.binarsibc6challange.presentation.ui.adapter.ChildAdapter
 import com.thatnawfal.binarsibc6challange.presentation.ui.adapter.GenreAdapter
@@ -50,6 +53,7 @@ class DetailMovieFragment : Fragment() {
     }
 
     private val viewModel : MovieViewModel by viewModels()
+    private val favoriteViewModel : FavoriteViewModel by viewModels()
 
 
     override fun onCreateView(
@@ -67,6 +71,17 @@ class DetailMovieFragment : Fragment() {
         binding.backButton.setOnClickListener { findNavController().popBackStack() }
 
         movieId?.let { viewModel.loadDetailMovie(it, getString(R.string.countryCode)) }
+
+        favoriteViewModel.msgSnackBar.observe(viewLifecycleOwner){
+            it.getContentIfNotHandled()?.let { msg ->
+                Snackbar.make(
+                    activity?.window?.decorView?.rootView!!,
+                    msg,
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
+        }
+
         observeDetail()
     }
 
@@ -124,10 +139,31 @@ class DetailMovieFragment : Fragment() {
             crossfade(true)
             placeholder(R.drawable.poster_placeholder)
         }
+
         binding.ivDetailPoster.load(Helper.POSTER_API_ENDPOINT + Helper.POSTER_SIZE_W780_ENDPOINT + movie?.posterPath) {
             crossfade(true)
             placeholder(R.drawable.poster_placeholder)
         }
+
+        binding.fabDetailFavorite.isVisible = false
+        favoriteViewModel.checkFavoriteNetwork(movie?.id!!)
+        favoriteViewModel.isFavorited.observe(viewLifecycleOwner){
+            binding.fabDetailFavorite.isVisible = true
+            if (it){
+                binding.fabDetailFavorite.setOnClickListener {
+                    favoriteViewModel.deleteFavoriteNetwork(movie.id)
+                }
+            } else {
+                binding.fabDetailFavorite.setOnClickListener {
+                    favoriteViewModel.addFavoriteNetwork(movie.id ?: 0, "1xHa7jfkL", movie.posterPath.toString())
+                    favoriteViewModel.newFavorite.observe(viewLifecycleOwner){
+
+                    }
+                }
+            }
+        }
+
+
 
         movie?.let {
             it.id?.let { movies -> viewModel.loadRecommendedMovies(movies) }

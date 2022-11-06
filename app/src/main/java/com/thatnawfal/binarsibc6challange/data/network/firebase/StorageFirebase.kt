@@ -17,7 +17,8 @@ class StorageFirebase {
         )
 
         db.collection("favorite")
-            .add(favorite)
+            .document(idFilm.toString())
+            .set(favorite)
             .addOnSuccessListener {
                 msg = "Success"
             }
@@ -28,16 +29,56 @@ class StorageFirebase {
         return msg
     }
 
-    fun getFavorite(uid : String) {
+    fun deleteFavorite(idFilm: Int): Boolean {
+        var msg = false
+        db.collection("favorite")
+            .document(idFilm.toString())
+            .delete()
+            .addOnSuccessListener {
+                Log.e("Delete Favorite", "deleteFavorite: Deleted Success")
+                msg = true
+            }
+            .addOnFailureListener {
+                Log.e("Delete Favorite", "deleteFavorite: Deleted Failed")
+            }
+
+        return msg
+    }
+
+    fun getFavorite(uid : String) : List<FavoriteEntity>{
+        val listFavoriteEntity = mutableListOf<FavoriteEntity>()
         db.collection("favorite")
             .get()
             .addOnSuccessListener {
                 for (document in it) {
-                    Log.d("Firebase", "${document.id} => ${document.data}")
+                    val favorite = FavoriteEntity(
+                        document.id.toInt(),
+                        document.data["uid"] as String?,
+                        document.data["poster"] as String?
+                    )
+                    listFavoriteEntity.add(favorite)
+                    Log.d("Firebase", "${document.id} => ${document.data["poster"].toString()}")
                 }
             }
             .addOnFailureListener {
                 Log.w("Firebase", "Error getting documents.", it)
             }
+        return listFavoriteEntity
+    }
+
+    fun checkFavorite(filmId: Int): Boolean {
+        var isAny = false
+
+        db.collection("favorite")
+            .document(filmId.toString())
+            .get()
+            .addOnSuccessListener {
+                isAny = true
+            }
+            .addOnFailureListener {
+                isAny = false
+            }
+
+        return isAny
     }
 }

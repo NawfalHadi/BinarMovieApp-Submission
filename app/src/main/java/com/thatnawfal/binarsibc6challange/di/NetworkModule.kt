@@ -5,6 +5,9 @@ import com.thatnawfal.binarsibc6challange.BuildConfig
 import com.thatnawfal.binarsibc6challange.data.network.ApiService
 import com.thatnawfal.binarsibc6challange.data.network.datasource.MovieDataSource
 import com.thatnawfal.binarsibc6challange.data.network.datasource.MovieDataSourceImpl
+import com.thatnawfal.binarsibc6challange.data.network.firebase.StorageDataSource
+import com.thatnawfal.binarsibc6challange.data.network.firebase.StorageDataSourceImpl
+import com.thatnawfal.binarsibc6challange.data.network.firebase.StorageFirebase
 import com.thatnawfal.binarsibc6challange.data.repository.NetworkRepository
 import com.thatnawfal.binarsibc6challange.data.repository.NetworkRepositoryImpl
 import dagger.Module
@@ -36,7 +39,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideApiService (client: OkHttpClient) : ApiService {
+    fun provideApiService () : ApiService {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.TMDB_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -52,7 +55,19 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideNetworkRepository(movieDataSource: MovieDataSource) : NetworkRepository {
-        return NetworkRepositoryImpl(movieDataSource)
+    fun provideStorageFirebase() : StorageFirebase {
+        return StorageFirebase()
+    }
+
+    @Provides
+    @Singleton
+    fun provideFirebaseDataSource(firebase : StorageFirebase) : StorageDataSource {
+        return StorageDataSourceImpl(firebase)
+    }
+
+    @Provides
+    @Singleton
+    fun provideNetworkRepository(movieDataSource: MovieDataSource, storageDataSource: StorageDataSource) : NetworkRepository {
+        return NetworkRepositoryImpl(movieDataSource, storageDataSource)
     }
 }
